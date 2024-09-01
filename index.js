@@ -24,12 +24,17 @@ const color = getComputedStyle(document.documentElement).getPropertyValue('--Lig
 const color1 = getComputedStyle(document.documentElement).getPropertyValue('--Smokeygrey');
 const color2 = getComputedStyle(document.documentElement).getPropertyValue('--Lightgrey');
 
+const headery = document.querySelector(".headeryear");
+const headerm = document.querySelector(".headermonth");
+const headerd = document.querySelector(".headerday");
+
+
 var flags = [true, true, true, true];
 var overallFlag = true;
 button.addEventListener("click", () => {
     const currenDate = new Date();
     var inputdays = 0;
-    var inputmonths = -1;
+    var inputmonths = 0;
     var inputyears = 0;
     if(month.value.toString() == ""){
         monthe.style.display = "block";
@@ -47,7 +52,7 @@ button.addEventListener("click", () => {
     else{
         monthi.style.display = "none";
         monthe.style.display = "none";
-        inputmonths += parseInt(month.value);
+        inputmonths += parseInt(month.value) - 1;
         decoloring(month, monthh);
         flags[0] = true;
     }
@@ -128,11 +133,20 @@ button.addEventListener("click", () => {
             }
 
             if(daydiff < 0){
-                monthdiff--;
+                if(monthdiff === 0) {
+                    agediff--;
+                    monthdiff = 11;
+                }
+                else monthdiff--;
                 const prevmonthdays = new Date(inputyears, inputmonths, 0).getDate();
                 daydiff += prevmonthdays;
             }
+            agediff <= 1 ? headery.textContent = " year" : headery.textContent = " years";
+            monthdiff <= 1 ? headerm.textContent = " month" : headerm.textContent = " months";
+            daydiff <= 1 ? headerd.textContent = " day" : headerd.textContent = " days";
+            
             youryears.textContent = agediff;
+            // if(monthdiff == -1 )
             yourmonths.textContent = monthdiff;
             yourdays.textContent = daydiff;
 

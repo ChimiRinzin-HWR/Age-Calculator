@@ -76,7 +76,7 @@ h1{
     font-weight: 800;
     line-height: 4.5rem;
 
-    span{
+    .anim{
         color: var(--Purple);
         font-size: 4.5rem;
     }
