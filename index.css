@@ -152,10 +152,11 @@ footer{
         input{
             width: 100%;
             padding: 0.8rem 1rem;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
     }
     h1{
+        font-size: 3rem;
         line-height: 4.5rem;
     }
 }
